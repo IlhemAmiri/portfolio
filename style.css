@@ -65,6 +65,39 @@ body{
     color: var(--main-color);
     display: none;
 }
+/* Styles pour les écrans plus petits */
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 5%;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .navbar {
+        display: none; /* Cacher le menu par défaut */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: flex; /* Afficher le menu lorsque le menu-icon est cliqué */
+    }
+
+    .navbar a {
+        margin: 1rem 0;
+        font-size: 1.6rem;
+    }
+
+    #menu-icon {
+        display: block; /* Afficher le menu-icon */
+    }
+}
 section{
     min-height: 100vh;
     padding: 10rem 12% 10rem;
@@ -179,54 +212,6 @@ span{
     background-color: var(--main-color);
     color: black;
 }
-/* .text-animation {
-    font-size: 34px;
-    font-weight: 600;
-    min-height: 280px;
-}
-.text-animation span {
-    position: relative;
-}
-.text-animation span::before {
-    content: "Web Developer";
-    color: var(--main-color);
-    animation: words 20s infinite;
-}
-.text-animation span::after {
-    content: "";
-    background-color: var(--main-color);
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 3px solid var(--bg-color);
-    right: -8px;
-    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
-}
-@keyframes cursor {
-    0%, 20% {
-        content: "Frontend Designer";
-    }
-    21%, 40% {
-        content: "Web Designer";
-    }
-    41%, 60% {
-        content: "Web Designer";
-    }
-    61%, 80% {
-        content: "Web Designer";
-    }
-    81%, 100% {
-        content: "Web Designer";
-    }
-}
-@keyframes typing {
-    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
-        width: 0;
-    }
-    5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
-        width: calc(100% + 8px);
-    }
-} */
 .heading{
     font-size: 8rem;
     text-align: center;
@@ -312,54 +297,88 @@ span{
     background-color: var(--bg-color);
     width: 50px;
 }
-.services{
+.services {
     background: var(--bg-color);
     color: black;
+    padding: 2rem 1rem; /* Ajouter un peu de padding pour les petits écrans */
 }
-.services h2{
+
+.services h2 {
     margin-bottom: 5rem;
     color: white;
+    text-align: center; /* Centrer le titre */
 }
-.services-container{
+
+.services-container {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2.5rem;
-}       
-.service-box{
+    padding: 1rem; /* Ajouter un padding pour éviter que les éléments ne touchent les bords */
+}
+
+.service-box {
     background-color: var(--main-color);
     height: 300px;
     border-radius: 3rem;
     border: 5px solid transparent;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Éviter le dépassement du texte */
 }
-.service-box:hover{
-    background: white;
+
+.service-box:hover {
     color: black;
     border: 5px solid var(--main-color);
     transform: scale(1.03);
 }
-.service-box .service-info{
+
+.service-info {
     display: flex;
     flex-direction: column;
     text-align: left;
-    max-height: 200px;
-    justify-content: left;
-    align-items: baseline;
-    padding: 5rem 5rem;
+    padding: 2rem; /* Réduire le padding pour les petits écrans */
+    overflow: hidden; /* Éviter le dépassement du texte */
 }
-.service-info h4{
-    font-size: 3rem;
+
+.service-info h4 {
+    font-size: 2rem; /* Réduire la taille de la police */
     font-weight: 800;
-    line-height: 2;
+    line-height: 1.5;
 }
-.service-info{
-    font-size: 1.6rem;
+
+.service-info p {
+    font-size: 1.4rem; /* Réduire la taille de la police */
     font-weight: 600;
-    max-height: 100px;
     line-height: 1.7;
-    margin: auto;
+    margin: 1rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .services-container {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+        gap: 1.5rem; /* Réduire l'écart entre les cartes */
+    }
+
+    .service-box {
+        height: auto; /* Ajuster la hauteur automatiquement */
+    }
+
+    .service-info {
+        padding: 1rem; /* Réduire le padding pour les petits écrans */
+    }
+
+    .service-info h4 {
+        font-size: 1.6rem; /* Réduire la taille de la police */
+    }
+
+    .service-info p {
+        font-size: 1.2rem; /* Réduire la taille de la police */
+    }
 }
 
 
@@ -386,7 +405,7 @@ span{
 
 .project-item:hover {
     transform: scale(1.03); /* Effet de mise à l'échelle au survol */
-    box-shadow: 0 0 25px var(--main-color); /* Ombre portée au survol */
+    box-shadow: 0 0 10px var(--main-color); /* Ombre portée au survol */
 }
 
 .project-item img {
@@ -411,6 +430,8 @@ span{
     line-height: 1.7;
     color: var(--text-color);
 }
+
+
 .contact{
     background-color: var(--bg-color);
 }
@@ -605,7 +626,6 @@ span{
     outline: none; 
     text-decoration: none; 
 }
-
 .skills {
     padding: 50px 0;
     background-color: var(--bg-color);
@@ -616,6 +636,7 @@ span{
     text-align: center;
     margin-bottom: 30px;
     font-weight: bold;
+    color: var(--primary-color);
     transition: color 0.5s ease-in-out;
 }
 
@@ -624,63 +645,61 @@ span{
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    overflow: hidden; /* Ensure container doesn't overflow */
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .skill-item {
+    background: linear-gradient(135deg, #f4d6f1 0%, #efd9ac 100%);
+    border-radius: 15px;
+    box-shadow:0 0 5px var(--main-color);;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 140px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    animation: slideIn 1s ease forwards;
-    animation-delay: calc(0.1s * var(--i));
-}
-
-.skill-item:hover {
-    transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
 .skill-item img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    transition: opacity 0.3s ease;
+    max-width: 70%;
+    max-height: 70%;
+    transition: transform 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .skill-item:hover img {
-    opacity: 0.8;
+    transform: scale(1.1);
 }
 
-@media (min-width: 768px) {
-    .skill-item {
-        width: 80px;
-        height: 80px;
-    }
+.skill-item:before {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: bottom 0.3s, opacity 0.3s;
 }
 
-@media (min-width: 1024px) {
-    .skill-item {
-        width: 100px;
-        height: 100px;
-    }
+.skill-item:hover:before {
+    bottom: 10px;
+    opacity: 1;
 }
-.skill-item.animate {
-    animation: slideIn 1s ease forwards;
-}
+
 .service-box {
     position: relative;
 }
